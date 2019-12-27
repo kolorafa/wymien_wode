@@ -139,6 +139,10 @@ client.on('message', function (topic, message) {
 //catches ctrl+c event
 process.on('SIGINT', async () => {
   console.log("CTRL+C")
+  setTimeout(() => {
+    console.log("pompa_stop failed, exiting")
+    process.exit(1);
+  },5000);
   await actions.pompa_stop();
   process.exit(1);
 });
